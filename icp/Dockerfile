@@ -16,28 +16,35 @@
 
 FROM ashwinta/choreo:my-custom-wso2-integration-control-plane-localrepo
 
-
 # Ensure root privileges for these commands
 USER root
 
-# Create a new user with UID 10014. Creating to bypass choreo security checks 
+# Create a new user with UID 10014 to bypass choreo security checks
 RUN addgroup --gid 10014 choreo && \
-    adduser  --disabled-password --uid 10014 --ingroup choreo --gecos "" choreouser
-
+    adduser --disabled-password --uid 10014 --ingroup choreo --gecos "" choreouser
 
 # Move product from wso2carbon home to choreouser home
 RUN mv /home/wso2carbon/wso2-integration-control-plane-1.0.0 /home/choreouser/
 
 # Set proper permissions to product home directory
 RUN chown -R choreouser:choreo /home/choreouser/wso2-integration-control-plane-1.0.0
- 
-#Switch to choreouser (userid 10014)
+
+# Provide access to the product directory and any potential log directories
+RUN mkdir -p /home/choreouser/wso2-integration-control-plane-1.0.0/logs && \
+    chown -R choreouser:choreo /home/choreouser/wso2-integration-control-plane-1.0.0 && \
+    chmod -R 755 /home/choreouser/wso2-integration-control-plane-1.0.0
+
+# Provide permissions for creating logs and other runtime directories (you can add more if needed)
+RUN chmod -R 777 /home/choreouser/wso2-integration-control-plane-1.0.0
+
+# Switch to choreouser (userid 10014)
 USER 10014
 
 # Expose port 9743 for the application
 EXPOSE 9743
 
-#Switch to choreouser home
+# Switch to choreouser home
 WORKDIR /home/choreouser
 
+# Entrypoint script or application binary
 ENTRYPOINT ["/home/choreouser/wso2-integration-control-plane-1.0.0/bin/dashboard.sh"]
