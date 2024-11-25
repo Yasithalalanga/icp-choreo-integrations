@@ -26,14 +26,9 @@ RUN addgroup --gid 10014 choreo && \
 # Move product from wso2carbon home to choreouser home
 RUN mv /home/wso2carbon/wso2-integration-control-plane-1.0.0 /home/choreouser/
 
-# Grant full ownership and permissions for the choreouser
-RUN chown -R choreouser:choreo /home/choreouser && \
-    chmod -R u+rwx /home/choreouser
-
-# Pre-create the logs directory for the application
-RUN mkdir -p /home/choreouser/wso2-integration-control-plane-1.0.0/logs && \
-    chown -R choreouser:choreo /home/choreouser/wso2-integration-control-plane-1.0.0/logs
-
+# Set proper permissions to product home directory
+RUN chown -R choreouser:choreo /home/choreouser/wso2-integration-control-plane-1.0.0
+ 
 #Switch to choreouser (userid 10014)
 USER 10014
 
