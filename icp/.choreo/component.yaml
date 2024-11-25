@@ -4,4 +4,6 @@ endpoints:
 - name: icp-service-endpoint
   service:
      port: 9743
-  type: TCP
+  type: REST
+  networkVisibilities: 
+     - Project
