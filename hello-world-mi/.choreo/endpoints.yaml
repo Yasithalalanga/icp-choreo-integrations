@@ -2,7 +2,8 @@ version: 1.0
 endpoints:
   - name: MIAdminService
     port: 9164
-    type: TCP
+    type: REST
+    context: /
     networkVisibility: Public
   - name: MIHTTPPort
     port: 8290
