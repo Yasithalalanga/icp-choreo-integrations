@@ -1,3 +1,4 @@
 [dashboard_config]
 dashboard_url = "https://ccca0f46-e6d8-4b61-a1c3-6ba4e5cb3bfb-dev-internal.e1-us-east-azure.internal.preview-dv.choreoapis.dev/icp-project-setup/icp-server-external/v1.0/dashboard/api/"
-management_hostname = "ccca0f46-e6d8-4b61-a1c3-6ba4e5cb3bfb-dev-internal.e1-us-east-azure.internal.preview-dv.choreoapis.dev"
+management_hostname = "hello-world-mi-186248412"
+management_port = 9164
