@@ -5,6 +5,11 @@ endpoints:
     type: REST
     context: /
     networkVisibility: Public
+  - name: MIAdminServiceHTTPS
+    port: 9164
+    type: REST
+    context: /
+    networkVisibility: Public
   - name: MIHTTPPort
     port: 8290
     type: REST
