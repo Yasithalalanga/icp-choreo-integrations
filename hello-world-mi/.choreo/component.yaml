@@ -1,0 +1,40 @@
+schemaVersion: 1.1
+endpoints:
+  - name: mi-management-api-http
+    displayName: Management API HTTP
+    service:
+      basePath: /
+      port: 9201
+    type: REST
+    networkVisibilities:
+      - Public
+      - Project
+      - Organization
+  - name: mi-management-api-https
+    displayName: Management API HTTPS
+    service:
+      basePath: /
+      port: 9164
+    type: REST
+    networkVisibilities:
+      - Public
+      - Project
+      - Organization
+  - name: mi-service-api-http
+    displayName: Service API HTTP
+    service:
+      basePath: /
+      port: 8290
+    type: REST
+    networkVisibilities:
+      - Public
+      - Organization
+  - name: mi-service-api-https
+    displayName: Service API HTTPS
+    service:
+      basePath: /
+      port: 8253
+    type: REST
+    networkVisibilities:
+      - Public
+      - Organization
